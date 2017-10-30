@@ -3,6 +3,7 @@ import axios from 'axios';
 import Q from 'q';
 import qs from 'qs';
 
+const API_URL = 'http://172.16.21.244/vue-test-api/';
 
 axios.interceptors.request.use((config) => {
   config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -17,7 +18,7 @@ axios.interceptors.request.use((config) => {
 export default {
   fetch() {
     return Q.Promise((resolve, reject) => {
-      axios.get('http://172.16.21.244/vue-test-api/fetch.php').then((response) => {
+      axios.get(`${API_URL}fetch.php`).then((response) => {
         const json = response.data;
         if (parseInt(json.code, 10) === 0) {
           resolve(json.data);
@@ -32,7 +33,7 @@ export default {
   },
   save(todos) {
     return Q.Promise((resolve, reject) => {
-      axios.post('http://172.16.21.244/vue-test-api/save.php', {
+      axios.post(`${API_URL}save.php`, {
         data: JSON.stringify(todos),
         action: 'save',
       }).then((response) => {
@@ -50,7 +51,7 @@ export default {
   },
   add(todo) {
     return Q.Promise((resolve, reject) => {
-      axios.post('http://172.16.21.244/vue-test-api/save.php', {
+      axios.post(`${API_URL}save.php`, {
         data: JSON.stringify(todo),
         action: 'add',
       }).then((response) => {
@@ -68,7 +69,7 @@ export default {
   },
   remove(todo) {
     return Q.Promise((resolve, reject) => {
-      axios.post('http://172.16.21.244/vue-test-api/save.php', {
+      axios.post(`${API_URL}save.php`, {
         data: todo.id,
         action: 'remove',
       }).then((response) => {
@@ -86,7 +87,7 @@ export default {
   },
   modify(todo) {
     return Q.Promise((resolve, reject) => {
-      axios.post('http://172.16.21.244/vue-test-api/save.php', {
+      axios.post(`${API_URL}save.php`, {
         data: JSON.stringify(todo),
         action: 'modify',
       }).then((response) => {
