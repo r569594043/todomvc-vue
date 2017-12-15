@@ -20,9 +20,6 @@
     <h2>Todo Demo</h2>
     <ul>
       <li><router-link to="todo">Todo</router-link></li>
-      <li><router-link to="antd-demo">Ant Design Demo</router-link></li>
-      <li><router-link to="iview-demo">iView Demo</router-link></li>
-      <li><router-link to="startup">Startup</router-link></li>
     </ul>
   </div>
 </template>
